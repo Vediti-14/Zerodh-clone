@@ -16,7 +16,7 @@ function Education() {
             covering everything from the basics to advanced trading.
           </p>
           <a href="" style={{ textDecoration: "none" }}>
-            Versity <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            Versity <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
           </a>
           <p className="mt-5">
             TradingQ&A, the most active trading and investment community in

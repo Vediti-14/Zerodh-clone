@@ -5,8 +5,6 @@ import Stats from './Stats';
 import Awards from './Awards';
 import Hero from './Hero';
 import OpenAccount from '../OpenAccount';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
 
 
 function HomePage() {

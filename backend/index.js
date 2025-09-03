@@ -18,7 +18,15 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3002","https://zerodh-clone-dashboard678.onrender.com"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+//app.use(cors());
 app.use(bodyParser.json());
 
 // app.get("/addHoldings", async (req, res) => {
@@ -190,6 +198,9 @@ app.use(bodyParser.json());
 //   res.send("Done!");
 // });
 
+app.use(cookieParser());
+app.use(express.json());
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
@@ -215,16 +226,8 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.use(
-  cors({
-    origin: ["http://localhost:3002","https://zerodh-clone-dashboard678.onrender.com"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
 
-app.use(cookieParser());
-app.use(express.json());
+
 app.use("/", authRoute);
 
 app.get("/", (req, res) => {
@@ -233,13 +236,21 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(PORT, () => {
+/*app.listen(PORT, () => {
   console.log("App started!");
   mongoose.connect(uri,{
   })
  .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
 
-});
+});*/
+
+mongoose.connect(uri)
+  .then(() => {
+    console.log("MongoDB connected successfully");
+    app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+  })
+  .catch(err => console.error("MongoDB connection error:", err));
+
 
 

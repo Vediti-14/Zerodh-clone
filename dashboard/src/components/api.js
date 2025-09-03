@@ -1,0 +1,1 @@
+export const API_URL = "https://zerodh-clone-backend12.onrender.com";

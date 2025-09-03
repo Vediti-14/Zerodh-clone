@@ -227,6 +227,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoute);
 
+app.get("/", (req, res) => {
+  res.send("Backend is live!");
+});
+
 
 
 app.listen(PORT, () => {
@@ -237,4 +241,5 @@ app.listen(PORT, () => {
   .catch((err) => console.error(err));
 
 });
+
 

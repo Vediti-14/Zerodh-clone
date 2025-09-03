@@ -217,7 +217,7 @@ app.post("/newOrder", async (req, res) => {
 
 app.use(
   cors({
-    origin: ["http://localhost:3002"],
+    origin: ["http://localhost:3002","https://zerodh-clone-dashboard678.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
